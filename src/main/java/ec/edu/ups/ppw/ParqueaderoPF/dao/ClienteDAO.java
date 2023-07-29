@@ -38,4 +38,5 @@ public List<Cliente> getAll(){
 	Query q = em.createQuery(jpql);
 	return q.getResultList();
 }
+
 }

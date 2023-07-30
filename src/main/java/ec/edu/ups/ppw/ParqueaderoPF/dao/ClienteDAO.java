@@ -34,7 +34,7 @@ public void delete(String cedula) {
 	em.remove(c);
 }
 public List<Cliente> getAll(){
-	String jpql = "SELECT c FROM Cliente";
+	String jpql = "SELECT c FROM Cliente c";
 	Query q = em.createQuery(jpql);
 	return q.getResultList();
 }

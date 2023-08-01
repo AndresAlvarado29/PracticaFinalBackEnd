@@ -13,14 +13,19 @@ public class Ticket {
 @GeneratedValue
 @Column(name="tic_id")
 private int id;
+
 @Column(name="tic_fecha")
 private Date fecha;
+
 @Column(name="tic_puesto")
 private int puesto;
+
 @Column(name="tic_hora_entrada")
 private Date horaEntrada;
+
 @Column(name="tic_hora_salida")
 private Date horaSalida;
+
 public int getId() {
 	return id;
 }

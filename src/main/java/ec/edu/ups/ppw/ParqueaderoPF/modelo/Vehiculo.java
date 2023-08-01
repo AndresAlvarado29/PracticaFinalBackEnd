@@ -3,20 +3,27 @@ package ec.edu.ups.ppw.ParqueaderoPF.modelo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Vehiculo {
+	
 @Id
 @Column(name="veh_placa")
 private String placa;
+
 @Column(name="veh_marca")
 private String marca;
-@Column(name="veh_modelo")
-private String modelo;
-@Column(name="veh_color")
-private String color;
+
 @Column(name="veh_tipo")
 private String tipo;
+
+//relaciones
+@OneToOne
+@JoinColumn(name="tic_id")
+private Ticket ticket;
+
 public String getPlaca() {
 	return placa;
 }
@@ -29,24 +36,24 @@ public String getMarca() {
 public void setMarca(String marca) {
 	this.marca = marca;
 }
-public String getModelo() {
-	return modelo;
-}
-public void setModelo(String modelo) {
-	this.modelo = modelo;
-}
-public String getColor() {
-	return color;
-}
-public void setColor(String color) {
-	this.color = color;
-}
 public String getTipo() {
 	return tipo;
 }
 public void setTipo(String tipo) {
 	this.tipo = tipo;
 }
+
+public Ticket getTicket() {
+	return ticket;
+}
+public void setTicket(Ticket ticket) {
+	this.ticket = ticket;
+}
+@Override
+public String toString() {
+	return "Vehiculo [placa=" + placa + ", marca=" + marca + ", tipo=" + tipo + ", ticket=" + ticket + "]";
+}
+
 
 }
 

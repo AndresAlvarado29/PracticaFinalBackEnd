@@ -24,8 +24,17 @@ private GestionFactura gFactura;
 @Produces("application/json")
 @Consumes("application/json")
 public Response guardarFactura(Factura factura, DetalleFactura detalleFactura,Cliente cliente) {
+	gFactura.guardarFactura(factura);
 	gFactura.agregarDetalle(detalleFactura);
 	gFactura.agregarCliente(cliente);
+	return Response.status(Response.Status.OK).entity(factura).build();
+}
+@POST
+@Path("crearD")
+@Produces("application/json")
+@Consumes("application/json")
+public Response guardarFactura(Factura factura, DetalleFactura detalleFactura) {
+	gFactura.agregarDetalle(detalleFactura);
 	gFactura.guardarFactura(factura);
 	return Response.status(Response.Status.OK).entity(factura).build();
 }

@@ -1,6 +1,7 @@
 package ec.edu.ups.ppw.ParqueaderoPF.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import ec.edu.ups.ppw.ParqueaderoPF.modelo.Cliente;
@@ -41,7 +42,7 @@ public List<Factura> getAll(){
 }
 public void agregarDetalle(DetalleFactura detalle) {
 	Factura f = new Factura();
-	f.getDetalles().add(detalle);
+	f.addDetalle(detalle);
 	}
 public void agregarCliente(Cliente cliente) {
     Factura f = new Factura();

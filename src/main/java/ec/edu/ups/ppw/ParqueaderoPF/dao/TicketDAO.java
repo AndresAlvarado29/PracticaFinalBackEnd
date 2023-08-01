@@ -32,7 +32,7 @@ public void delete(int id) {
 	em.remove(t);
 }
 public List<Ticket> getAll() {
-	String jpql="SELECT t FROM Ticket";
+	String jpql="SELECT t FROM Ticket t";
 	Query q = em.createQuery(jpql);
 	return q.getResultList();
 }

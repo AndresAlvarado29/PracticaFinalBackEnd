@@ -80,8 +80,6 @@ public void setCliente(Cliente cliente) {
 public List<DetalleFactura> getDetalles() {
 	return detalles;
 }
-public void setDetalles(List<DetalleFactura> detalles) {
-	this.detalles = detalles;
-}
+
 
 }

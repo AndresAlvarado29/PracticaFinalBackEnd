@@ -32,7 +32,7 @@ public void delete(String placa) {
 	em.remove(v);
 }
 public List<Vehiculo> getAlll(){
-	String jpql = "SELECT v FROM Vehiculo";
+	String jpql = "SELECT v FROM Vehiculo v";
 	Query q = em.createQuery(jpql);
 	return q.getResultList();
 }

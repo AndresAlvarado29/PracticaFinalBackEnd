@@ -34,7 +34,7 @@ public class DetalleFacturaDAO implements Serializable {
 		em.remove(dF);
 	}
 	public List<DetalleFactura> getAll(){
-		String jpql="SELECT dF FROM DetalleFactura";
+		String jpql="SELECT dF FROM DetalleFactura dF";
 		Query q = em.createQuery(jpql);
 		return q.getResultList();
 	}

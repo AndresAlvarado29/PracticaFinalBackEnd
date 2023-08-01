@@ -6,9 +6,11 @@ import ec.edu.ups.ppw.ParqueaderoPF.modelo.Cliente;
 import ec.edu.ups.ppw.ParqueaderoPF.negocio.GestionCliente;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 
@@ -42,5 +44,16 @@ public Response getClientes() {
 		return Response.status(Response.Status.OK).entity("Lista vacia").build();
 	}else {
 	return Response.status(Response.Status.OK).entity(listado).build();}
+}
+@DELETE
+@Path("borrar/{cedula}")
+public void borrar( @PathParam("cedula") String cedula) {
+	gCliente.borrar(cedula);
+}
+@GET
+@Path("buscar/{cedula}")
+@Produces("application/json")
+public Response buscar(@PathParam("cedula") String cedula) {
+	return Response.status(Response.Status.OK).entity(gCliente.buscar(cedula)).build();
 }
 }

@@ -2,8 +2,6 @@ package ec.edu.ups.ppw.ParqueaderoPF.servicio;
 
 import java.util.List;
 
-import ec.edu.ups.ppw.ParqueaderoPF.modelo.Cliente;
-import ec.edu.ups.ppw.ParqueaderoPF.modelo.DetalleFactura;
 import ec.edu.ups.ppw.ParqueaderoPF.modelo.Factura;
 import ec.edu.ups.ppw.ParqueaderoPF.negocio.GestionFactura;
 import jakarta.inject.Inject;
@@ -23,18 +21,7 @@ private GestionFactura gFactura;
 @Path("crear")
 @Produces("application/json")
 @Consumes("application/json")
-public Response guardarFactura(Factura factura, DetalleFactura detalleFactura,Cliente cliente) {
-	gFactura.guardarFactura(factura);
-	gFactura.agregarDetalle(detalleFactura);
-	gFactura.agregarCliente(cliente);
-	return Response.status(Response.Status.OK).entity(factura).build();
-}
-@POST
-@Path("crearD")
-@Produces("application/json")
-@Consumes("application/json")
-public Response guardarFactura(Factura factura, DetalleFactura detalleFactura) {
-	gFactura.agregarDetalle(detalleFactura);
+public Response guardarFactura(Factura factura) {
 	gFactura.guardarFactura(factura);
 	return Response.status(Response.Status.OK).entity(factura).build();
 }

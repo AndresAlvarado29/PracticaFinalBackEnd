@@ -1,6 +1,5 @@
 package ec.edu.ups.ppw.ParqueaderoPF.modelo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -82,9 +81,9 @@ public void setCliente(Cliente cliente) {
 public List<DetalleFactura> getDetalles() {
 	return detalles;
 }
-/*public void setDetalles(List<DetalleFactura> detalles) {
+public void setDetalles(List<DetalleFactura> detalles) {
 	this.detalles = detalles;
-}*/
+}
 public void addDetalle(DetalleFactura detalle) {
 	detalles.add(detalle);
 }

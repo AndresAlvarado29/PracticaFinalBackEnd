@@ -11,29 +11,35 @@ import jakarta.persistence.Query;
 
 @Stateless
 public class TicketDAO implements Serializable{
-/**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-@PersistenceContext
-private EntityManager em;
-public void create(Ticket ticket) {
+	
+	@PersistenceContext
+	private EntityManager em;
+	
+	public void create(Ticket ticket) {
 	em.persist(ticket);
-}
-public Ticket read(int id) {
-	Ticket t = em.find(Ticket.class, id);
+	}
+	public Ticket read(int numero) {
+	Ticket t = em.find(Ticket.class, numero);
 	return t;
-}
-public void update(Ticket ticket) {
+	}
+	public void update(Ticket ticket) {
 	em.merge(ticket);
-}
-public void delete(int id) {
-	Ticket t = em.find(Ticket.class, id);
+	}
+	public void delete(int numero) {
+	Ticket t = em.find(Ticket.class, numero);
 	em.remove(t);
-}
+
+	}
+
 public List<Ticket> getAll() {
+
 	String jpql="SELECT t FROM Ticket t";
 	Query q = em.createQuery(jpql);
 	return q.getResultList();
-}
+	}
+	
 }

@@ -1,8 +1,11 @@
 package ec.edu.ups.ppw.ParqueaderoPF.servicio;
 
+import java.util.Date;
 import java.util.List;
 
+import ec.edu.ups.ppw.ParqueaderoPF.modelo.Ticket;
 import ec.edu.ups.ppw.ParqueaderoPF.modelo.Vehiculo;
+import ec.edu.ups.ppw.ParqueaderoPF.negocio.GestionTicket;
 import ec.edu.ups.ppw.ParqueaderoPF.negocio.GestionVehiculo;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -14,33 +17,34 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 
-@Path("vehiculos")
-public class GVehiculoService {
+@Path("tickets")
+public class GTicketService {
 	
 	@Inject
-	private GestionVehiculo gVehiculos;
+	private GestionTicket gTicket;
 	
 	@GET
-	@Path("misvehiculos")
+	@Path("mistickets")
 	@Produces("application/json")
-	public Vehiculo misDatos() {
-		Vehiculo v = new Vehiculo();
-		v.setPlaca("PDQ-5698");
-		v.setMarca("hyundai");
-		v.setTipo("auto");
+	public Ticket misDatos() {
+		Ticket t = new Ticket();
+		t.setNumeroTicket(1);
+		t.setPuesto(11);
+		t.setHoraEntrada(null);
+		t.setHoraSalida(null);
 		
-		return v;
+		return t;
 	}
 	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response guardarVehiculo(Vehiculo vehiculo) {
+	public Response guardarTicket(Ticket ticket) {
 
 		
 		try {
-			gVehiculos.guardarVehiculo(vehiculo);
-			return Response.status(Response.Status.OK).entity(vehiculo).build();
+			gTicket.guardarTicket(ticket);
+			return Response.status(Response.Status.OK).entity(ticket).build();
 					
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -54,17 +58,17 @@ public class GVehiculoService {
 	}
 	
 	@GET
-	@Path("/listarVehiculos")
+	@Path("/listarTickets")
 	@Produces("application/json")
-	public List<Vehiculo> getAll(){
+	public List<Ticket> getAll(){
 		
-		return gVehiculos.getAll();
+		return gTicket.getAll();
 	}
 	
 	@DELETE
-	@Path("/{placa}")
-	public Response eliminarVehiculo (@PathParam("placa")String placa){
-		boolean eliminar = gVehiculos.eliminarVehiculo(placa);
+	@Path("/{numero}")
+	public Response eliminarTicket (@PathParam("numero")int numero){
+		boolean eliminar = gTicket.eliminarTicket(numero);
 		if (eliminar) {
 			return Response.status(Response.Status.OK).build();
 		} else {
@@ -72,23 +76,5 @@ public class GVehiculoService {
 		}
 
 	}
-	
-	@GET
-	@Path("buscarVehiculo/{placa}")
-	@Produces("application/json")
-	public Response buscarVehiculo(@PathParam("placa")String placa) {
-		
-		Vehiculo v = new Vehiculo();
-		
-		try {
-			v = gVehiculos.buscarVehiculo(placa);
-			return Response.status(Response.Status.OK).entity(v).build();
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			
-			return Response.status(Response.Status.BAD_REQUEST).build();
-		}
-	
-	}
+
 }

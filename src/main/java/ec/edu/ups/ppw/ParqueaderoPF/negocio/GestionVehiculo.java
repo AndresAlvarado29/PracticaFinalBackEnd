@@ -6,6 +6,7 @@ import ec.edu.ups.ppw.ParqueaderoPF.dao.VehiculoDAO;
 import ec.edu.ups.ppw.ParqueaderoPF.modelo.Vehiculo;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class GestionVehiculo {
@@ -45,4 +46,15 @@ public class GestionVehiculo {
 			return false;
 		}
 	}
+	
+	public Vehiculo buscarVehiculo(String placa) {
+		Vehiculo vehiculo = new Vehiculo(); 
+		try {
+			vehiculo = daoVehiculo.findPlaca(placa);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vehiculo;
+    }
 }

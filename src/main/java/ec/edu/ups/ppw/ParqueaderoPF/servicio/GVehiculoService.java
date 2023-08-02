@@ -86,6 +86,7 @@ public class GVehiculoService {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 	

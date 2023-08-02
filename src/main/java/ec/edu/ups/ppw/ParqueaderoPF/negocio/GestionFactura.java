@@ -19,4 +19,15 @@ public void guardarFactura(Factura factura) {
 public List<Factura> listar(){
 	return facturaDAO.getAll();
 }
+//buscar
+public Factura buscar(String numero) {
+	for (Factura facturas : facturaDAO.getAll()) {
+		if(numero.equals(facturas.getNumeroFactura())) {
+			return facturas;
+		}else {
+			System.out.println("no existe ese numero");
+		}
+	}
+	return null;
+}
 }

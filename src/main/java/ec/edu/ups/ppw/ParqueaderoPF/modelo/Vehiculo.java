@@ -16,6 +16,7 @@ public class Vehiculo {
 	@Column(name="veh_placa")
 	private String placa;
 
+<<<<<<< HEAD
 	@Column(name="veh_marca")
 	private String marca;
 
@@ -45,6 +46,49 @@ public class Vehiculo {
 	public String toString() {
 		return "Vehiculo [placa=" + placa + ", marca=" + marca + ", tipo=" + tipo + "]";
 	}
+=======
+@Column(name="veh_marca")
+private String marca;
+
+@Column(name="veh_tipo")
+private String tipo;
+
+//relaciones
+@OneToOne
+@JoinColumn(name="tic_id")
+private Ticket ticket;
+
+public String getPlaca() {
+	return placa;
+}
+public void setPlaca(String placa) {
+	this.placa = placa;
+}
+public String getMarca() {
+	return marca;
+}
+public void setMarca(String marca) {
+	this.marca = marca;
+}
+public String getTipo() {
+	return tipo;
+}
+public void setTipo(String tipo) {
+	this.tipo = tipo;
+}
+
+
+public Ticket getTicket() {
+	return ticket;
+}
+public void setTicket(Ticket ticket) {
+	this.ticket = ticket;
+}
+@Override
+public String toString() {
+	return "Vehiculo [placa=" + placa + ", marca=" + marca + ", tipo=" + tipo + ", ticket=" + ticket + "]";
+}
+>>>>>>> 73f52f188dea70f648a8e246c64b29b67c886fa7
 
 }
 

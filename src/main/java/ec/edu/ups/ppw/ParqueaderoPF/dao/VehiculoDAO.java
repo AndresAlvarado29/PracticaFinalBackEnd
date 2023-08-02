@@ -35,7 +35,8 @@ public class VehiculoDAO implements Serializable{
 	public void delete(String placa) {
 	Vehiculo v = em.find(Vehiculo.class, placa);
 	em.remove(v);
-	}
+
+}
 	public List<Vehiculo> getAll(){
 	String jpql = "SELECT v FROM Vehiculo v";
 	Query q = em.createQuery(jpql);

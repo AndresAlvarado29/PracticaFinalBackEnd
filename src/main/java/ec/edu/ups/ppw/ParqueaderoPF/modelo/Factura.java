@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -32,7 +33,7 @@ private double total;
 @OneToOne
 @JoinColumn(name="cli_cedula")
 private Cliente cliente;
-@OneToMany(cascade=CascadeType.ALL)
+@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 @JoinColumn(name="fac_id")
 private List<DetalleFactura> detalles;
 public int getId() {
@@ -83,5 +84,7 @@ public List<DetalleFactura> getDetalles() {
 public void setDetalles(List<DetalleFactura> detalles) {
 	this.detalles = detalles;
 }
-
+public void addDetalle(DetalleFactura detalle) {
+	detalles.add(detalle);
+}
 }

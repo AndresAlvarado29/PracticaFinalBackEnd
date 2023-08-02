@@ -1,13 +1,10 @@
 package ec.edu.ups.ppw.ParqueaderoPF.modelo;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cliente {
@@ -25,9 +22,12 @@ private String correo;
 @Column(name="cli_direccion")
 private String direccion;
 //relaciones
-@OneToMany(fetch = FetchType.EAGER)
-@JoinColumn(name="cli_cedula")
-private List<Vehiculo> vehiculos;
+@OneToOne
+@JoinColumn(name="veh_placa")
+private Vehiculo vehiculo;
+@OneToOne
+@JoinColumn(name="tic_id")
+private Ticket ticket;
 public String getCedula() {
 	return cedula;
 }
@@ -63,6 +63,18 @@ public String getDireccion() {
 }
 public void setDireccion(String direccion) {
 	this.direccion = direccion;
+}
+public Vehiculo getVehiculo() {
+	return vehiculo;
+}
+public void setVehiculo(Vehiculo vehiculo) {
+	this.vehiculo = vehiculo;
+}
+public Ticket getTicket() {
+	return ticket;
+}
+public void setTicket(Ticket ticket) {
+	this.ticket = ticket;
 }
 
 }

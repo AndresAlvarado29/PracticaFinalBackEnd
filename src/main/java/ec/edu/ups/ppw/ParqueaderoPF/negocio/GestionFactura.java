@@ -23,6 +23,7 @@ public List<Factura> listar(){
 public Factura buscar(String numero) {
 	for (Factura facturas : facturaDAO.getAll()) {
 		if(numero.equals(facturas.getNumeroFactura())) {
+			facturas.setEstado("Anulado");
 			return facturas;
 		}else {
 			System.out.println("no existe ese numero");

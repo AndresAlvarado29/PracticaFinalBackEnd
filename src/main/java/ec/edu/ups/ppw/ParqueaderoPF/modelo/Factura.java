@@ -29,6 +29,8 @@ private double subtotal;
 private double iva;
 @Column(name="fac_total")
 private double total;
+@Column(name="fac_estado")
+private String estado;
 //relaciones
 @OneToOne
 @JoinColumn(name="cli_cedula")
@@ -87,4 +89,11 @@ public void setDetalles(List<DetalleFactura> detalles) {
 public void addDetalle(DetalleFactura detalle) {
 	detalles.add(detalle);
 }
+public String getEstado() {
+	return estado;
+}
+public void setEstado(String estado) {
+	this.estado = estado;
+}
+
 }

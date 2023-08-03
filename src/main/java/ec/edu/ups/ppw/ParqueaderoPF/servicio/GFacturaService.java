@@ -9,6 +9,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 
@@ -34,5 +35,20 @@ public Response getCliente() {
 		return Response.status(Response.Status.OK).entity("Lista vacia").build();
 	}else {
 	return Response.status(Response.Status.OK).entity(listado).build();}
+}
+@GET
+@Path("buscarN/{numero}")
+@Produces("application/json")
+public Factura buscar(@PathParam("numero") String numero) {
+	return gFactura.buscar(numero);
+} 
+@GET
+@Path("suma/{costoUnitario}/{iva}")
+public String suma(@PathParam("costoUnitario")int costoUnitario,@PathParam("iva") double iva) {
+double subtotal=costoUnitario;
+double impuestos=subtotal*iva;
+double total=subtotal+impuestos;
+String r=""+total;
+return r;
 }
 }

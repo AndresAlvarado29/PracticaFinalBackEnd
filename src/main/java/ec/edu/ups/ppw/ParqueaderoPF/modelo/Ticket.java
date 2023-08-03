@@ -1,5 +1,6 @@
 package ec.edu.ups.ppw.ParqueaderoPF.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jakarta.persistence.CascadeType;
@@ -12,7 +13,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class Ticket {
+public class Ticket implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
@@ -26,14 +29,14 @@ public class Ticket {
 	private int puesto;
 
 	@Column(name="tic_hora_entrada")
-	private Date horaEntrada;
+	private String horaEntrada;
 
 	@Column(name="tic_hora_salida")
-	private Date horaSalida;
+	private String horaSalida;
 
 	//relaciones
-	@OneToOne
-    @JoinColumn(name = "veh_placa")
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "placa")
 	private Vehiculo vehiculo;
 	
 	public int getId() {
@@ -56,16 +59,16 @@ public class Ticket {
 	public void setPuesto(int puesto) {
 		this.puesto = puesto;
 	}
-	public Date getHoraEntrada() {
+	public String getHoraEntrada() {
 		return horaEntrada;
 	}
-	public void setHoraEntrada(Date horaEntrada) {
+	public void setHoraEntrada(String horaEntrada) {
 		this.horaEntrada = horaEntrada;
 	}
-	public Date getHoraSalida() {
+	public String getHoraSalida() {
 		return horaSalida;
 	}
-	public void setHoraSalida(Date horaSalida) {
+	public void setHoraSalida(String horaSalida) {
 		this.horaSalida = horaSalida;
 	}
 	public Vehiculo getVehiculo() {

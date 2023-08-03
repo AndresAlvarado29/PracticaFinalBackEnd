@@ -47,4 +47,9 @@ public class GestionTicket {
 		}
 	}
 	
+	public Ticket buscarTicket(int idTiket) {
+		
+		return daoTicket.read(idTiket);
+	}
+	
 }

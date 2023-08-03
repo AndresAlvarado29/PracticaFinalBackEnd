@@ -40,7 +40,6 @@ public class GTicketService {
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response guardarTicket(Ticket ticket) {
-
 		
 		try {
 			gTicket.guardarTicket(ticket);
@@ -75,6 +74,25 @@ public class GTicketService {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
+	}
+	
+	@GET
+	@Path("buscarTicket/{id}")
+	@Produces("application/json")
+	public Response buscarTicket(@PathParam("id")int idTicket) {
+		
+		Ticket t = new Ticket();
+		
+		try {
+			t = gTicket.buscarTicket(idTicket);
+			return Response.status(Response.Status.OK).entity(t).build();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+	
 	}
 
 }
